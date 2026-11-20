@@ -1,0 +1,50 @@
+# Environment variables (MANDATORY SECURITY RULE)
+.env
+.env*.local
+.env.production
+*.pem
+*.key
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Next.js build
+/.next/
+/out/
+/build
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary extraction, scripts, and video frames
+*.html
+*.css
+*.py
+*.txt
+history_frames/
+video_frames/
+scratch/
+delta_data.json
+payload.json
