@@ -105,3 +105,13 @@ Reconstrução fiel (pixel & motion faithful) da landing page internacional da *
   - Servidor Next.js rodando em produção na porta 3001.
   - Verificação no browser subagent confirmando conformidade visual e estrutural completa.
 **Status:** complete
+
+### Phase 9: Animações de Entrada Tipográfica nos Textos Monumentais e Deploy GitHub
+- Implementação de animação de reveal tipográfico editorial com máscara (`overflow: hidden`), slide-up (`yPercent: 115 -> 0`), fade (`opacity: 0 -> 1`) e `stagger` de 0.12s a 0.14s acelerados por GPU com GSAP `ScrollTrigger` e `useGSAP`:
+  1. **`BrandManifesto.tsx`**: Revelação sequencial das 4 linhas do título ("SINCE 1961,", "COFFEE that", "AWAKENS", "STORIES"), seguida pelo botão "A História da Delta →" e pelo parágrafo descritivo.
+  2. **`SustainabilitySection.tsx`**: Revelação do eyebrow ("SUSTENTABILIDADE"), das 3 linhas monumentais ("IMPACTO POSITIVO", "da ORIGEM até", "à CHÁVENA") e do botão pílula "Sustentabilidade →".
+  3. **`AzoresPreFooter.tsx`**: Revelação do eyebrow ("O CAFÉ DOS AÇORES"), das 3 linhas monumentais ("O PRIMEIRO", "CAFÉ", "PORTUGUÊS") e do botão CTA.
+- Testado e compilado com `npm run build` (sucesso com zero erros de tipo ou compilação).
+- Validado ao vivo no navegador pelo browser subagent.
+- Commit e push realizados para o GitHub no repositório `https://github.com/RaphaCalixto/Cafeteria-Portuguesa.git` (commit `ae8930a`).
+**Status:** complete

@@ -1,5 +1,14 @@
 # Diário de Progresso - Delta Cafés Replica
 
+## [2026-11-20 23:27] Phase 9 Concluída - Animações de Entrada Tipográfica nos Textos Monumentais
+- **Animações Editoriais de Revelação de Texto (Masked Slide-Up & Stagger)** implementadas com GSAP ScrollTrigger em:
+  - **`BrandManifesto.tsx`**: Revelação em máscara `overflow: hidden` das 4 linhas do título monumental (`SINCE 1961,`, `COFFEE that`, `AWAKENS`, `STORIES`) com `yPercent: 115 -> 0`, fade suave e stagger rítmico de 0.12s, seguido pelo botão `A História da Delta →` e pelo parágrafo narrativo.
+  - **`SustainabilitySection.tsx`**: Revelação do eyebrow `SUSTENTABILIDADE`, seguido pelas 3 linhas monumentais (`IMPACTO POSITIVO`, `da ORIGEM até`, `à CHÁVENA`) e pelo botão pill `Sustentabilidade →` com aceleração por GPU.
+  - **`AzoresPreFooter.tsx`**: Revelação com máscara do título monumental de 3 linhas `O PRIMEIRO CAFÉ PORTUGUÊS` e do botão CTA.
+- **Validação de Build**: `npm run build` executado com 100% de sucesso sem erros.
+- **Validação Visual**: Verificado em tempo real no navegador a 1440x900 pelo subagente de browser (`fed2f746-04b8-4f9c-809c-8155b7162763`), comprovando a fluidez da animação ao rolar a página.
+- **Deploy GitHub**: Código commitado e enviado para a branch `main` no repositório `https://github.com/RaphaCalixto/Cafeteria-Portuguesa.git` (commit `ae8930a`).
+
 ## [2026-11-19] Início do Projeto
 - **Onboarding & Scoping**: Concluído alinhamento interativo via `ask_question`. Definida stack Next.js 15 + TypeScript + Tailwind CSS + GSAP.
 - **Download do Site de Referência**: Baixado `site.html` (525 KB) de `https://deltacafes.com/en`.
