@@ -36,8 +36,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang }) => {
       title: currentLang === "pt" ? "Delta, café com coração." : "Delta, coffee with heart.",
       ctaText: currentLang === "pt" ? "Sobre a Delta" : "About Delta",
       ctaHref: "#history",
-      bgImage: "https://cdn.sanity.io/images/pcdkofnf/production/f0f69aff81fd15fba09ca70bcdf43e5e9fca029c-1280x720.jpg",
-      thumbImage: "/imgs/hero/tab_01.png",
+      bgImage: "/imgs/hero/banner-producao-4k.jpg",
+      thumbImage: "/imgs/hero/tab_01_4k.jpg",
     },
     {
       id: "02",
@@ -45,8 +45,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang }) => {
       title: currentLang === "pt" ? "O primeiro café Português." : "The first Portuguese coffee.",
       ctaText: currentLang === "pt" ? "O Café dos Açores" : "The Azores Coffee",
       ctaHref: "#azores-coffee",
-      bgImage: "/imgs/hero/azores-cherries-clean.jpg",
-      thumbImage: "/imgs/hero/tab_02.png",
+      bgImage: "/imgs/hero/banner-colheita-4k.jpg",
+      thumbImage: "/imgs/hero/tab_02_4k.jpg",
     },
     {
       id: "03",
@@ -54,8 +54,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang }) => {
       title: currentLang === "pt" ? "Há muito Portugal em Delta." : "There is a lot of Portugal in Delta.",
       ctaText: currentLang === "pt" ? "Conheça a Delta" : "Discover Delta",
       ctaHref: "#products",
-      bgImage: "https://cdn.sanity.io/images/pcdkofnf/production/2ea2e09733aaa2f44783df1adcc4a1f86938bfa8-206x124.jpg",
-      thumbImage: "/imgs/hero/tab_03.png",
+      bgImage: "/imgs/hero/banner-cafe-4k.jpg",
+      thumbImage: "/imgs/hero/tab_03_4k.jpg",
     },
   ];
 
@@ -92,7 +92,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ currentLang }) => {
               src={slide.bgImage}
               alt={slide.title}
               fill
-              priority={idx === 1}
+              priority={idx === activeSlide}
+              quality={95}
               sizes="100vw"
               className="object-cover object-center filter brightness-[0.88] contrast-[1.05]"
             />
