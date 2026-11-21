@@ -122,6 +122,13 @@
   - `npm run build` gerou build estático otimizado sem nenhum aviso ou erro de tipagem.
   - Servidor em produção executando na porta 3001.
   - Navegador subagent navegou e comprovou a remoção das seções, a fidelidade do Hero e o rodapé transparente sobre o vídeo (capturas `hero_replica_live.png` e `transparent_footer_live.png`).
+
+## [2026-11-20 22:04] Correção de Deploy na Vercel (Commit `bcbb8da`)
+- **Diagnóstico do Erro**: O arquivo `.gitignore` continha a regra genérica `*.css`, que acidentalmente ignorou o arquivo de estilos globais [src/app/globals.css](file:///c:/Users/NaoDr/Downloads/Cafeteria%20Portuguesa/src/app/globals.css) no commit inicial.
+- **Ajuste Realizado**:
+  - Regra de exclusão em `.gitignore` restrita aos arquivos temporários da raiz (`/*.css`), adicionando exceção explícita `!src/**/*.css`.
+  - [src/app/globals.css](file:///c:/Users/NaoDr/Downloads/Cafeteria%20Portuguesa/src/app/globals.css) adicionado ao repositório.
+- **Commit & Push**: Commit `bcbb8da` enviado com sucesso para a branch `main` do GitHub (`https://github.com/RaphaCalixto/Cafeteria-Portuguesa.git`). Vercel acionará automaticamente a nova compilação bem-sucedida.
 - **Componente [DeltaQuiz.tsx](file:///c:/Users/NaoDr/Downloads/Cafeteria%20Portuguesa/src/components/sections/DeltaQuiz.tsx)**:
   - Anel orbital tridimensional de 18 embalagens de café Delta girando ao redor do centro (`--degrees: calc(i * 360/18 * 1deg)` com rotação contrária no pacote para mantê-lo vertical).
   - Animação suave com GSAP ScrollTrigger sincronizada com a rolagem do usuário.
