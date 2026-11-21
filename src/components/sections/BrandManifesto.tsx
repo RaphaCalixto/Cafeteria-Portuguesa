@@ -144,7 +144,56 @@ export const BrandManifesto: React.FC<BrandManifestoProps> = ({ currentLang }) =
 
   useGSAP(
     () => {
-      if (!cameraRef.current) return;
+      if (!containerRef.current || !cameraRef.current) return;
+
+      // 0. Editorial Typography Entrance Reveal (appearing effect with mask slide-up & stagger)
+      const manifestoLines = containerRef.current.querySelectorAll(".manifesto-line");
+      const manifestoBtn = containerRef.current.querySelector(".manifesto-btn");
+      const manifestoDesc = containerRef.current.querySelector(".manifesto-desc");
+
+      if (manifestoLines.length > 0) {
+        const textTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".manifesto-header",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        textTl.from(manifestoLines, {
+          yPercent: 115,
+          opacity: 0,
+          duration: 1.0,
+          stagger: 0.12,
+          ease: "power3.out",
+        });
+
+        if (manifestoBtn) {
+          textTl.from(
+            manifestoBtn,
+            {
+              y: 25,
+              opacity: 0,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=0.5"
+          );
+        }
+
+        if (manifestoDesc) {
+          textTl.from(
+            manifestoDesc,
+            {
+              y: 20,
+              opacity: 0,
+              duration: 0.9,
+              ease: "power3.out",
+            },
+            "-=0.6"
+          );
+        }
+      }
 
       // 1. Visibly expressive continuous floating animation on cards (organic levitation in 2D space)
       const floaters = cameraRef.current.querySelectorAll(".ambient-float");
@@ -247,15 +296,26 @@ export const BrandManifesto: React.FC<BrandManifestoProps> = ({ currentLang }) =
       className="relative py-20 sm:py-32 bg-oak-1000 text-creme-100 overflow-hidden select-none"
     >
       {/* 1. Header Typography Area (Replicating exact video style) */}
-      <div className="max-w-4xl mx-auto px-4 text-center relative z-20 mb-8 sm:mb-12">
+      <div className="manifesto-header max-w-4xl mx-auto px-4 text-center relative z-20 mb-8 sm:mb-12">
         <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-creme-100 uppercase font-bold">
-          SINCE 1961, <br />
-          COFFEE <span className="font-serif italic font-normal text-delta-yellow lowercase text-3xl sm:text-5xl md:text-6xl mx-2">that</span> AWAKENS <br />
-          STORIES
+          <span className="block overflow-hidden py-0.5 sm:py-1">
+            <span className="manifesto-line block will-change-transform">SINCE 1961,</span>
+          </span>
+          <span className="block overflow-hidden py-0.5 sm:py-1">
+            <span className="manifesto-line block will-change-transform">
+              COFFEE <span className="font-serif italic font-normal text-delta-yellow lowercase text-3xl sm:text-5xl md:text-6xl mx-2">that</span>
+            </span>
+          </span>
+          <span className="block overflow-hidden py-0.5 sm:py-1">
+            <span className="manifesto-line block will-change-transform">AWAKENS</span>
+          </span>
+          <span className="block overflow-hidden py-0.5 sm:py-1">
+            <span className="manifesto-line block will-change-transform">STORIES</span>
+          </span>
         </h2>
 
         {/* History pill button */}
-        <div className="mt-8 flex justify-center">
+        <div className="manifesto-btn mt-8 flex justify-center will-change-transform">
           <a
             href="#history-map"
             className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-oak-800/80 hover:bg-oak-700/90 border border-creme-200/15 text-creme-100 text-xs sm:text-sm font-sans font-medium transition-all duration-300 shadow-md group"
@@ -268,7 +328,7 @@ export const BrandManifesto: React.FC<BrandManifestoProps> = ({ currentLang }) =
         </div>
 
         {/* Story description paragraph */}
-        <p className="mt-6 text-sm sm:text-base text-creme-200/80 font-sans max-w-xl mx-auto leading-relaxed">
+        <p className="manifesto-desc mt-6 text-sm sm:text-base text-creme-200/80 font-sans max-w-xl mx-auto leading-relaxed will-change-transform">
           {currentLang === "pt"
             ? "A Delta Cafés nasceu em Campo Maior do sonho de uma família. Hoje, faz parte do quotidiano de milhões de pessoas, preservando a essência que a tornou única."
             : "Delta Cafés was born in Campo Maior from a family’s dream. Today, it is part of the daily lives of millions, while preserving the essence that made it unique."}

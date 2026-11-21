@@ -36,6 +36,56 @@ export const SustainabilitySection: React.FC<SustainabilitySectionProps> = ({
     () => {
       if (!containerRef.current) return;
 
+      // 0. Editorial Typography Entrance Reveal for Monumental Headline & Eyebrow
+      const sustainLines = containerRef.current.querySelectorAll(".sustainability-line");
+      const sustainEyebrow = containerRef.current.querySelector(".sustainability-eyebrow");
+      const sustainBtn = containerRef.current.querySelector(".sustainability-btn");
+
+      if (sustainLines.length > 0) {
+        const sustainTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".sustainability-hero-content",
+            start: "top 78%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        if (sustainEyebrow) {
+          sustainTl.from(sustainEyebrow, {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        }
+
+        sustainTl.from(
+          sustainLines,
+          {
+            yPercent: 115,
+            opacity: 0,
+            duration: 1.05,
+            stagger: 0.14,
+            ease: "power3.out",
+          },
+          sustainEyebrow ? "-=0.5" : 0
+        );
+
+        if (sustainBtn) {
+          sustainTl.from(
+            sustainBtn,
+            {
+              y: 25,
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=0.5"
+          );
+        }
+      }
+
       // 1. ScrollTrigger to scrub Rive line drawings as the user scrolls
       ScrollTrigger.create({
         trigger: containerRef.current,
@@ -153,37 +203,59 @@ export const SustainabilitySection: React.FC<SustainabilitySectionProps> = ({
         </div>
 
         {/* Center Monumental Content */}
-        <div className="relative z-20 max-w-3xl mx-auto px-6 text-center flex flex-col items-center justify-center">
+        <div className="sustainability-hero-content relative z-20 max-w-3xl mx-auto px-6 text-center flex flex-col items-center justify-center">
           {/* Eyebrow */}
-          <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#A3B899] mb-4 block drop-shadow-sm">
-            {currentLang === "pt" ? "Sustentabilidade" : "Sustainability"}
-          </span>
+          <div className="overflow-hidden mb-4">
+            <span className="sustainability-eyebrow text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#A3B899] block drop-shadow-sm will-change-transform">
+              {currentLang === "pt" ? "Sustentabilidade" : "Sustainability"}
+            </span>
+          </div>
 
           {/* Monumental Headline */}
           <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-[#E8F0E6] uppercase leading-[1.04] tracking-tight font-normal mb-8 drop-shadow-lg">
             {currentLang === "pt" ? (
               <>
-                <span>Impacto Positivo</span> <br />
-                <span className="font-serif italic lowercase font-light text-[#A3B899]">da</span>{" "}
-                <span>Origem</span>{" "}
-                <span className="font-serif italic lowercase font-light text-[#A3B899]">até</span> <br />
-                <span className="font-serif italic lowercase font-light text-[#A3B899]">à</span>{" "}
-                <span>Chávena</span>
+                <span className="block overflow-hidden py-0.5 sm:py-1">
+                  <span className="sustainability-line block will-change-transform">Impacto Positivo</span>
+                </span>
+                <span className="block overflow-hidden py-0.5 sm:py-1">
+                  <span className="sustainability-line block will-change-transform">
+                    <span className="font-serif italic lowercase font-light text-[#A3B899]">da</span>{" "}
+                    Origem{" "}
+                    <span className="font-serif italic lowercase font-light text-[#A3B899]">até</span>
+                  </span>
+                </span>
+                <span className="block overflow-hidden py-0.5 sm:py-1">
+                  <span className="sustainability-line block will-change-transform">
+                    <span className="font-serif italic lowercase font-light text-[#A3B899]">à</span>{" "}
+                    Chávena
+                  </span>
+                </span>
               </>
             ) : (
               <>
-                <span>Positive Impact</span> <br />
-                <span className="font-serif italic lowercase font-light text-[#A3B899]">from</span>{" "}
-                <span>the origin</span>{" "}
-                <span className="font-serif italic lowercase font-light text-[#A3B899]">to</span> <br />
-                <span className="font-serif italic lowercase font-light text-[#A3B899]">the</span>{" "}
-                <span>cup</span>
+                <span className="block overflow-hidden py-0.5 sm:py-1">
+                  <span className="sustainability-line block will-change-transform">Positive Impact</span>
+                </span>
+                <span className="block overflow-hidden py-0.5 sm:py-1">
+                  <span className="sustainability-line block will-change-transform">
+                    <span className="font-serif italic lowercase font-light text-[#A3B899]">from</span>{" "}
+                    the origin{" "}
+                    <span className="font-serif italic lowercase font-light text-[#A3B899]">to</span>
+                  </span>
+                </span>
+                <span className="block overflow-hidden py-0.5 sm:py-1">
+                  <span className="sustainability-line block will-change-transform">
+                    <span className="font-serif italic lowercase font-light text-[#A3B899]">the</span>{" "}
+                    cup
+                  </span>
+                </span>
               </>
             )}
           </h2>
 
           {/* Pill CTA Button */}
-          <div>
+          <div className="sustainability-btn will-change-transform">
             <a
               href="#pillars"
               className="group inline-flex items-center gap-3.5 bg-[#E8F0E6] hover:bg-white text-[#18231C] px-7 py-3 sm:px-8 sm:py-3.5 rounded-full shadow-2xl transition-all duration-300 active:scale-95 border border-[#E8F0E6]/20"

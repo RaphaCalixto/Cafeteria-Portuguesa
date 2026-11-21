@@ -41,21 +41,55 @@ export const AzoresPreFooter: React.FC<AzoresPreFooterProps> = ({ currentLang })
         }
       );
 
-      // Smooth reveal for content
-      gsap.fromTo(
-        contentRef.current,
-        { opacity: 0, y: 35 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
+      // Editorial reveal for Azores monumental typography
+      const azoresLines = containerRef.current.querySelectorAll(".azores-line");
+      const azoresEyebrow = containerRef.current.querySelector(".azores-eyebrow");
+      const azoresBtn = containerRef.current.querySelector(".azores-btn");
+
+      if (azoresLines.length > 0) {
+        const azoresTl = gsap.timeline({
           scrollTrigger: {
             trigger: contentRef.current,
             start: "top 80%",
+            toggleActions: "play none none none",
           },
+        });
+
+        if (azoresEyebrow) {
+          azoresTl.from(azoresEyebrow, {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out",
+          });
         }
-      );
+
+        azoresTl.from(
+          azoresLines,
+          {
+            yPercent: 115,
+            opacity: 0,
+            duration: 1.05,
+            stagger: 0.14,
+            ease: "power3.out",
+          },
+          azoresEyebrow ? "-=0.5" : 0
+        );
+
+        if (azoresBtn) {
+          azoresTl.from(
+            azoresBtn,
+            {
+              y: 25,
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.8,
+              ease: "power3.out",
+            },
+            "-=0.5"
+          );
+        }
+      }
     },
     { scope: containerRef }
   );
@@ -89,29 +123,43 @@ export const AzoresPreFooter: React.FC<AzoresPreFooterProps> = ({ currentLang })
         className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center pt-28 sm:pt-36 pb-16 sm:pb-24"
       >
         {/* Eyebrow Label */}
-        <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#FAF5EE]/90 mb-4 block drop-shadow-md">
-          {currentLang === "pt" ? "O Café dos Açores" : "The Azores Coffee"}
-        </span>
+        <div className="overflow-hidden mb-4">
+          <span className="azores-eyebrow text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#FAF5EE]/90 block drop-shadow-md will-change-transform">
+            {currentLang === "pt" ? "O Café dos Açores" : "The Azores Coffee"}
+          </span>
+        </div>
 
         {/* Monumental 3-Line Headline */}
         <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white uppercase leading-[0.95] tracking-tight font-normal drop-shadow-2xl mb-8">
           {currentLang === "pt" ? (
             <>
-              <span>O Primeiro</span> <br />
-              <span>Café</span> <br />
-              <span>Português</span>
+              <span className="block overflow-hidden py-0.5 sm:py-1">
+                <span className="azores-line block will-change-transform">O Primeiro</span>
+              </span>
+              <span className="block overflow-hidden py-0.5 sm:py-1">
+                <span className="azores-line block will-change-transform">Café</span>
+              </span>
+              <span className="block overflow-hidden py-0.5 sm:py-1">
+                <span className="azores-line block will-change-transform">Português</span>
+              </span>
             </>
           ) : (
             <>
-              <span>The First</span> <br />
-              <span>Portuguese</span> <br />
-              <span>Coffee</span>
+              <span className="block overflow-hidden py-0.5 sm:py-1">
+                <span className="azores-line block will-change-transform">The First</span>
+              </span>
+              <span className="block overflow-hidden py-0.5 sm:py-1">
+                <span className="azores-line block will-change-transform">Portuguese</span>
+              </span>
+              <span className="block overflow-hidden py-0.5 sm:py-1">
+                <span className="azores-line block will-change-transform">Coffee</span>
+              </span>
             </>
           )}
         </h2>
 
         {/* Pill Button CTA */}
-        <div>
+        <div className="azores-btn will-change-transform">
           <a
             href="#hero"
             className="group inline-flex items-center gap-3.5 bg-[#FAF5EE] hover:bg-white text-[#35221A] px-7 py-3 sm:px-8 sm:py-3.5 rounded-full shadow-2xl hover:shadow-white/20 transition-all duration-300 active:scale-95 border border-[#35221A]/10"
