@@ -129,6 +129,15 @@
   - Regra de exclusão em `.gitignore` restrita aos arquivos temporários da raiz (`/*.css`), adicionando exceção explícita `!src/**/*.css`.
   - [src/app/globals.css](file:///c:/Users/NaoDr/Downloads/Cafeteria%20Portuguesa/src/app/globals.css) adicionado ao repositório.
 - **Commit & Push**: Commit `bcbb8da` enviado com sucesso para a branch `main` do GitHub (`https://github.com/RaphaCalixto/Cafeteria-Portuguesa.git`). Vercel acionará automaticamente a nova compilação bem-sucedida.
+
+## [2026-11-20 22:38] Atualização dos Banners do Hero para 4K UHD
+- **Substituição dos 3 Banners por Resolução 4K UHD (3840x2160)**:
+  1. **Banner 01 ("Delta, café com coração.")**: Fotografia em 4K UHD de **Produção de café** — saco rústico de juta transbordando de grãos de café recém-torrados com chávena de porcelana (`/imgs/hero/banner-producao-4k.jpg`).
+  2. **Banner 02 ("O primeiro café Português.")**: Fotografia em 4K UHD de **Alguém colhendo café** — mãos de agricultor colhendo cerejas de café maduras avermelhadas diretamente nos ramos verdes da plantação (`/imgs/hero/banner-colheita-4k.jpg`).
+  3. **Banner 03 ("Há muito Portugal em Delta.")**: Fotografia em 4K UHD de **Café** — brinde de chávenas de café artesanal com crema aveludada, latte art e café gelado com grãos tostados (`/imgs/hero/banner-cafe-4k.jpg`).
+- **Miniaturas Atualizadas nas Abas**: Todas as 3 abas da barra inferior receberam thumbnails nítidos em alta definição (`tab_01_4k.jpg`, `tab_02_4k.jpg`, `tab_03_4k.jpg`).
+- **Build & Sincronização no GitHub**: Build de produção compilado com sucesso e commits (`572644b` e `fee9295`) enviados para a branch `main`.
+- **Validação Visual**: As 3 abas foram inspecionadas e atestadas com qualidade 4K sem qualquer artefato ou desfoque.
 - **Componente [DeltaQuiz.tsx](file:///c:/Users/NaoDr/Downloads/Cafeteria%20Portuguesa/src/components/sections/DeltaQuiz.tsx)**:
   - Anel orbital tridimensional de 18 embalagens de café Delta girando ao redor do centro (`--degrees: calc(i * 360/18 * 1deg)` com rotação contrária no pacote para mantê-lo vertical).
   - Animação suave com GSAP ScrollTrigger sincronizada com a rolagem do usuário.
